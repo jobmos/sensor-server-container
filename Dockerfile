@@ -8,6 +8,8 @@ RUN apk add g++ python3-dev
 RUN CFLAGS="-fcommon" pip3 install RPi.GPIO
 RUN pip3 install adafruit-circuitpython-dht
 
+RUN pip3 install mysql-connector-python
+
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
@@ -16,4 +18,4 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-CMD [ "python3", "-m", "flask", "run", "--host=0.0.0.0" ]
+CMD [ "python3", "-u", "-m", "flask", "run", "--host=0.0.0.0" ]
